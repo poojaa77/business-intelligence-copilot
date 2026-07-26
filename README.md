@@ -51,7 +51,8 @@ Demo Steps
 
 ## Project Preview
 
-### Dashboard 
+#### Dashboard ![Dashboard](images/Dashboard.png)
+
 
 
 
