@@ -49,6 +49,12 @@ Demo Steps
 - Chat with your data.
 - Download the PowerPoint or PDF report.
 
+## Project Preview
+
+### Dashboard 
+
+
+
 ## Tech stack
 
 - **Streamlit** — UI and app framework
