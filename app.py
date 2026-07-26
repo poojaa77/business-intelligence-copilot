@@ -67,24 +67,25 @@ with st.sidebar:
             st.success("Data processed — explore the tabs below.")
 
     st.divider()
-   st.subheader("AI Provider")
-   provider = st.selectbox("Provider", ["OpenAI", "Gemini"])
+    st.subheader("AI Provider")
+    provider = st.selectbox("Provider", ["OpenAI", "Gemini"])
 
-   secret_key_name = "OPENAI_API_KEY" if provider == "OpenAI" else "GEMINI_API_KEY"
-   saved_key = st.secrets.get(secret_key_name, "")
+    secret_key_name = "OPENAI_API_KEY" if provider == "OpenAI" else "GEMINI_API_KEY"
+    saved_key = st.secrets.get(secret_key_name, "")
 
-   if saved_key:
-       api_key = saved_key
-       st.success(f"{provider} key loaded from saved secrets.")
-   else:
-       api_key = st.text_input(f"{provider} API key", type="password",
-                                help="Used only for this session; never saved to disk. "
-                                     "Add it under app Settings → Secrets on Streamlit Cloud "
-                                     "to avoid re-entering it every time.")
-   st.caption(
-       "Only aggregated statistics (totals, averages, % changes, trends) are ever "
-       "sent to the LLM. Individual rows are never shared."
-   )
+    if saved_key:
+        api_key = saved_key
+        st.success(f"{provider} key loaded from saved secrets.")
+    else:
+        api_key = st.text_input(f"{provider} API key", type="password",
+                                 help="Used only for this session; never saved to disk. "
+                                      "Add it under app Settings → Secrets on Streamlit Cloud "
+                                      "to avoid re-entering it every time.")
+    st.caption(
+        "Only aggregated statistics (totals, averages, % changes, trends) are ever "
+        "sent to the LLM. Individual rows are never shared."
+    )
+
 # ---------------------------------------------------------------------------
 # Main area
 # ---------------------------------------------------------------------------
