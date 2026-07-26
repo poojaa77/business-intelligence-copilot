@@ -2,17 +2,52 @@
 
 An upgraded successor to [ai-business-health-analyzer](https://github.com/poojaa77/ai-business-health-analyzer) — a Streamlit app that turns **multiple months** of raw business data into a full interactive BI workflow: KPI dashboard, AI diagnostic, forecasting, anomaly detection, a chat assistant over your own data, and downloadable PPTX/PDF reports.
 
+🚀 Live Demo: https://business-intelligence-copilot-077.streamlit.app/
+
+📂 GitHub Repository: https://github.com/poojaa77/business-intelligence-copilot
+
+## Why I Built This
+
+Business teams often rely on spreadsheets to monitor performance across multiple months. While AI chatbots can analyze uploaded files, they require manual prompting and don't provide a repeatable analytics workflow.
+
+This project combines Business Intelligence techniques with Generative AI to automatically:
+
+Calculate KPIs
+Detect trends
+Forecast future performance
+Identify anomalies
+Generate executive summaries
+Create downloadable reports
+Answer business questions using natural language
+
+The result is a complete Business Intelligence workflow rather than a one-time AI conversation.
+
 ## Features
 
-- **Upload multiple months** — drop in several monthly files at once, or one file that already spans many months; periods are auto-detected from a date column or the filename.
-- **Automatic KPI engine** — numeric columns are auto-detected and matched against a bank of common business KPI keywords (revenue, churn, satisfaction, delivery, etc.), then aggregated per month.
-- **Interactive dashboard** — KPI cards + Plotly trend charts.
-- **AI explanations** — a structured executive diagnostic (summary, positive trends, concerns, risks, opportunities, recommendations) generated from aggregated stats only — raw rows are never sent to the LLM.
-- **Trend detection** — month-over-month % change, direction, and streaks per metric.
-- **Forecast next month** — a lightweight blend of linear trend extrapolation and a weighted moving average, with a confidence label, for each metric.
-- **Anomaly detection** — z-score (with an IQR fallback) flags unusual months per metric.
-- **Chat with your business data** — ask questions in plain language. For small datasets, all aggregated stats are stuffed into context; once the dataset grows past ~8 monthly chunks, the app automatically switches to a lightweight TF-IDF retrieval step (no vector DB or extra embedding API needed) so answers stay fast and cheap.
-- **Download PowerPoint / PDF** — a shareable report with the executive diagnostic, forecasts, anomalies, and charts, built from the exact same Plotly figures shown on screen.
+- **📂 Multi-file Upload** — Upload multiple monthly datasets or a single dataset containing multiple months. Time periods are automatically detected using either a date column or the filename.
+- **📊 Automatic KPI engine** — numeric columns are auto-detected and matched against a bank of common business KPI keywords (revenue, churn, satisfaction, delivery, etc.), then aggregated per month.
+- **📈 Interactive dashboard** — KPI cards + Plotly trend charts.
+- **🤖 AI explanations** — a structured executive diagnostic (summary, positive trends, concerns, risks, opportunities, recommendations) generated from aggregated stats only — raw rows are never sent to the LLM.
+- **📉 Trend detection** — month-over-month % change, direction, and streaks per metric.
+- **🔮 Forecast next month** — a lightweight blend of linear trend extrapolation and a weighted moving average, with a confidence label, for each metric.
+- **🚨 Anomaly detection** — z-score (with an IQR fallback) flags unusual months per metric.
+- **💬 Chat with your business data** — ask questions in plain language. For small datasets, all aggregated stats are stuffed into context; once the dataset grows past ~8 monthly chunks, the app automatically switches to a lightweight TF-IDF retrieval step (no vector DB or extra embedding API needed) so answers stay fast and cheap.
+- **📄 Download PowerPoint / PDF** — a shareable report with the executive diagnostic, forecasts, anomalies, and charts, built from the exact same Plotly figures shown on screen.
+
+## Live Demo
+
+Try the application here:
+
+https://business-intelligence-copilot-077.streamlit.app/
+
+Demo Steps
+
+- Open the application.
+- Upload the sample dataset or your own CSV/Excel file.
+- Explore the dashboard.
+- View AI-generated business insights.
+- Chat with your data.
+- Download the PowerPoint or PDF report.
 
 ## Tech stack
 
@@ -80,9 +115,13 @@ streamlit run app.py
 
 Upload `sample_data/sample_multimonth_business_data.csv` — it has 14 months across 3 regions with a seeded cost spike and a satisfaction dip, so you can see the anomaly detector and forecaster in action immediately.
 
-## Notes on data privacy
+## Data privacy
 
-Only **aggregated statistics** (monthly totals/averages, % changes, trend direction, forecasts, anomaly flags) are ever sent to the LLM provider, for both the AI diagnostic and the chat feature. Individual rows are never transmitted.
+Data privacy was a key design consideration.
+
+Only aggregated business statistics—including monthly totals, averages, trends, forecasts, and anomaly summaries—are shared with the LLM.
+
+Individual transaction-level records are never transmitted.
 
 ## Deploying
 
