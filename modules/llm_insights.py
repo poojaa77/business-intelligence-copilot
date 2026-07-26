@@ -42,7 +42,7 @@ def call_llm(provider: str, api_key: str, system_prompt: str, user_prompt: str,
         import google.generativeai as genai
         genai.configure(api_key=api_key)
         model = genai.GenerativeModel(
-            "gemini-1.5-flash",
+            "gemini-3.5-flash-lite",
             system_instruction=system_prompt,
         )
         resp = model.generate_content(
